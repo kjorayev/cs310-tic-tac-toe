@@ -1,5 +1,9 @@
 package edu.jsu.mcis;
 
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
 public class TicTacToe {
 
     private static final int DEFAULT_WIDTH = 3;
@@ -20,27 +24,43 @@ public class TicTacToe {
             catch(NumberFormatException e) {}
             
         }
-        
+		
+		
         /* Create MVC Objects */
 
         TicTacToeModel model = new TicTacToeModel(width);
         TicTacToeView view = new TicTacToeView(model);
-        TicTacToeController controller = new TicTacToeController(model, view);
+        //TicTacToeController controller = new TicTacToeController(model, view);
+
+		JFrame frame = new JFrame("Tic-Tac-Toe");
+
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		//3. Create components and put them in the frame.
+		//...create emptyLabel...
+		frame.add(view);
+
+		//4. Size the frame.
+		frame.pack();
+
+		//5. Show it.
+		frame.setVisible(true);
+
         
         /* MAIN LOOP */
 
-        while (!model.isGameover()){
+       /* while (!model.isGameover()){
             
             view.viewModel();
             controller.controlModel();
             
-        }
+        }*/
         
         /* Game is over; show the final board and the winner */
 
-        view.viewModel();
+        // view.viewModel();
 
-        view.showResult(model.getResult().toString());
+//        view.showResult(model.getResult().toString());
 
     }
 }
